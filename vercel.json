@@ -1,0 +1,10 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/apple-music",
+      "destination": "https://music.apple.com/us/album/i-used-to-think-i-could-fly/1615634288"
+    }
+  ]
+}
