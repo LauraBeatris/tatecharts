@@ -11,7 +11,19 @@
   "dependencies": {
     "next": "12.1.6",
     "react": "18.1.0",
-    "react-dom": "18.1.0"
+    "eslint": "8.11.0",
+    "react-dom": "18.1.0",
+    "eslint-config-next": "12.1.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-config-standard-jsx": "^10.0.0",
+    "eslint-config-standard-react": "^11.0.1",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-n": "^15.0.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.29.3",
+    "prettier": "^2.5.1",
+    "eslint-plugin-react-hooks": "^4.3.0"
   },
   "devDependencies": {
     "eslint": "8.16.0",

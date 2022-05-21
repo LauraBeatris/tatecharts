@@ -1,3 +1,22 @@
 {
-  "extends": "next/core-web-vitals"
+  "root": true,
+  "plugins": [
+    "react-hooks"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "standard",
+    "standard-react",
+    "standard-jsx",
+    "next/core-web-vitals"
+  ],
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "sort-imports": [
+      "error", { "ignoreCase": true, "ignoreDeclarationSort": true }
+    ]
+  },
+  "globals": {
+    "React": "writable"
+  }
 }
