@@ -30,8 +30,6 @@ export function LastSingleStreams () {
           />
         </Flex>
       </HStack>
-
-      <LastSingleStreamsTable />
     </VStack>
   )
 }
