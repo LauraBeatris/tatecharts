@@ -1,4 +1,5 @@
 import { Container, Flex, HStack, VStack } from '@chakra-ui/react'
+import { AlbumCharts, AlbumStreams, LastSingleStreams } from 'components/Sections'
 import { Title } from 'components/Typography'
 import Image from 'next/image'
 
@@ -74,6 +75,7 @@ export default function Home () {
           flexProps={{ right: '0' }}
           src='/images/cover-1.png'
         />
+
         <VStack
           position='relative'
           width='100%'
@@ -81,12 +83,20 @@ export default function Home () {
         >
           <AlbumLogo />
           <Title>dashboard</Title>
+
         </VStack>
+
         <AlbumCover
           flexProps={{ left: '0' }}
           src='/images/cover-2.png'
         />
       </HStack>
+
+      <VStack paddingTop='5'>
+        <LastSingleStreams />
+        <AlbumStreams />
+        <AlbumCharts />
+      </VStack>
     </ScreenLayout>
   )
 }
