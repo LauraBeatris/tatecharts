@@ -1,4 +1,5 @@
-import { HStack, VStack } from '@chakra-ui/react'
+import Image from 'next/image'
+import { Flex, HStack, VStack } from '@chakra-ui/react'
 import { SectionDescription, SectionTitle } from './Typography'
 
 export function LastSingleStreams () {
@@ -13,6 +14,19 @@ export function LastSingleStreams () {
           click to listen on respective services
         </SectionDescription>
       </VStack>
+
+      <Flex
+        width='182px'
+        height='84px'
+        alignItems='flex-end'
+        position='relative'
+      >
+        <Image
+          alt='WWYD player'
+          src='/images/wwyd-player-spotify.png'
+          layout='fill'
+        />
+      </Flex>
     </HStack>
   )
 }
