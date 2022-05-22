@@ -37,7 +37,7 @@ export function SectionTitle ({ children }) {
 export function SectionDescription ({ children }) {
   return (
     <Text
-      as='p'
+      as='h3'
       color='black'
       fontSize='sm'
       textShadow='lg'

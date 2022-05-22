@@ -48,7 +48,7 @@ function ScreenLayout ({ children }) {
     <VStack
       as='main'
       width='100vw'
-      height='100vh'
+      minHeight='100vh'
       backgroundColor='pink.300'
     >
       <Container

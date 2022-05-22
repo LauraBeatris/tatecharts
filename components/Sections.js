@@ -1,33 +1,38 @@
 import Image from 'next/image'
 import { Flex, HStack, VStack } from '@chakra-ui/react'
 import { SectionDescription, SectionTitle } from './Typography'
+import { LastSingleStreamsTable } from './Tables'
 
 export function LastSingleStreams () {
   return (
-    <HStack width='100%' as='section'>
-      <VStack
-        spacing='-1'
-        alignItems='flex-start'
-      >
-        <SectionTitle>last single streams</SectionTitle>
-        <SectionDescription>
-          click to listen on respective services
-        </SectionDescription>
-      </VStack>
+    <VStack as='section' alignItems='flex-start'>
+      <HStack width='100%'>
+        <VStack
+          spacing='-1'
+          alignItems='flex-start'
+        >
+          <SectionTitle>last single streams</SectionTitle>
+          <SectionDescription>
+            click to listen on respective services
+          </SectionDescription>
+        </VStack>
 
-      <Flex
-        width='182px'
-        height='84px'
-        alignItems='flex-end'
-        position='relative'
-      >
-        <Image
-          alt='WWYD player'
-          src='/images/wwyd-player-spotify.png'
-          layout='fill'
-        />
-      </Flex>
-    </HStack>
+        <Flex
+          width='182px'
+          height='84px'
+          alignItems='flex-end'
+          position='relative'
+        >
+          <Image
+            alt='WWYD player'
+            src='/images/wwyd-player-spotify.png'
+            layout='fill'
+          />
+        </Flex>
+      </HStack>
+
+      <LastSingleStreamsTable />
+    </VStack>
   )
 }
 
@@ -44,6 +49,7 @@ export function AlbumStreams () {
         <SectionDescription>
           click to see per individual track
         </SectionDescription>
+
       </VStack>
     </HStack>
   )
