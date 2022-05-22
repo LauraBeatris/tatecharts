@@ -1,10 +1,10 @@
 import Image from 'next/image'
-import { Flex, HStack, Select, VStack } from '@chakra-ui/react'
+import { Flex, HStack, VStack } from '@chakra-ui/react'
 import { SectionDescription, SectionTitle } from './Typography'
-import { AlbumChartsTable, AlbumStreamsTable, LastSingleStreamsTable } from './Tables'
+import { AlbumStatsTable, AlbumStreamsTable, LastSingleStatsTable } from './Tables'
 import { ChartTargetSelect } from './ChartTargetSelect'
 
-export function LastSingleStreams () {
+export function LastSingleStats () {
   return (
     <VStack as='section' alignItems='flex-start'>
       <HStack width='100%' alignItems='flex-end'>
@@ -12,7 +12,7 @@ export function LastSingleStreams () {
           spacing='-1'
           alignItems='flex-start'
         >
-          <SectionTitle>last single streams</SectionTitle>
+          <SectionTitle>last single stats</SectionTitle>
           <SectionDescription>
             click on each row to listen on the respective platform
           </SectionDescription>
@@ -32,57 +32,32 @@ export function LastSingleStreams () {
         </Flex>
       </HStack>
 
-      <LastSingleStreamsTable />
+      <ChartTargetSelect />
+      <LastSingleStatsTable />
     </VStack>
   )
 }
 
-export function AlbumStreams () {
+export function AlbumStats () {
   return (
-    <HStack width='100%' as='section'>
+    <VStack width='100%' as='section'>
+      <HStack alignItems='flex-end'>
+        <VStack alignItems='flex-start' spacing='-1'>
+          <SectionTitle>album stats</SectionTitle>
+          <SectionDescription>
+            by default showing global charts, select above for results from a specific country
+          </SectionDescription>
+        </VStack>
+      </HStack>
+
       <VStack
         width='100%'
-        spacing='-1'
         alignItems='flex-start'
       >
-        <SectionTitle>
-          album streams per platform
-        </SectionTitle>
-        <SectionDescription>
-          click on each row to listen on the respective platform
-        </SectionDescription>
-
-        <Flex width='100%'>
-          <AlbumStreamsTable tableContainerProps={{ marginTop: '15px' }} />
-        </Flex>
+        <ChartTargetSelect />
+        <AlbumStreamsTable tableContainerProps={{ marginTop: '15px' }} />
+        <AlbumStatsTable tableContainerProps={{ marginTop: '15px' }} />
       </VStack>
-    </HStack>
-  )
-}
-
-export function AlbumCharts () {
-  return (
-    <HStack width='100%' as='section'>
-      <VStack
-        spacing='-1'
-        alignItems='flex-end'
-      >
-        <HStack alignItems='flex-end'>
-          <VStack alignItems='flex-start' spacing='-1'>
-            <SectionTitle>album charts</SectionTitle>
-            <SectionDescription>
-              by default showing global charts, select above for results from a specific country
-            </SectionDescription>
-
-          </VStack>
-
-          <ChartTargetSelect />
-        </HStack>
-
-        <Flex width='100%'>
-          <AlbumChartsTable tableContainerProps={{ marginTop: '15px' }} />
-        </Flex>
-      </VStack>
-    </HStack>
+    </VStack>
   )
 }
