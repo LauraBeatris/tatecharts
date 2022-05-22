@@ -1,7 +1,8 @@
 import Image from 'next/image'
-import { Flex, HStack, VStack } from '@chakra-ui/react'
+import { Flex, HStack, Select, VStack } from '@chakra-ui/react'
 import { SectionDescription, SectionTitle } from './Typography'
 import { AlbumChartsTable, AlbumStreamsTable, LastSingleStreamsTable } from './Tables'
+import { ChartTargetSelect } from './ChartTargetSelect'
 
 export function LastSingleStreams () {
   return (
@@ -64,12 +65,19 @@ export function AlbumCharts () {
     <HStack width='100%' as='section'>
       <VStack
         spacing='-1'
-        alignItems='flex-start'
+        alignItems='flex-end'
       >
-        <SectionTitle>album charts</SectionTitle>
-        <SectionDescription>
-          by default showing global charts, select above for results from a specific country
-        </SectionDescription>
+        <HStack alignItems='flex-end'>
+          <VStack alignItems='flex-start' spacing='-1'>
+            <SectionTitle>album charts</SectionTitle>
+            <SectionDescription>
+              by default showing global charts, select above for results from a specific country
+            </SectionDescription>
+
+          </VStack>
+
+          <ChartTargetSelect />
+        </HStack>
 
         <Flex width='100%'>
           <AlbumChartsTable tableContainerProps={{ marginTop: '15px' }} />
