@@ -1,4 +1,4 @@
-import { Container, Flex, VStack } from '@chakra-ui/react'
+import { Container, Flex, HStack, VStack } from '@chakra-ui/react'
 import { Title } from 'components/Typography'
 import Image from 'next/image'
 
@@ -9,15 +9,34 @@ const imageStyle = {
 function AlbumLogo () {
   return (
     <Flex
+      zIndex='2'
       width={['100%', '457px']}
       height='170px'
       position='relative'
     >
       <Image
         src='/images/iutticf-logo.png'
-        alt='Imagem da balança do direito'
+        alt='I Used To Think I Could Fly Album Logo'
         layout='fill'
         style={imageStyle}
+      />
+    </Flex>
+  )
+}
+
+function AlbumCover ({ src, flexProps }) {
+  return (
+    <Flex
+      visibility={['hidden', 'initial']}
+      width='162px'
+      height='159px'
+      position='absolute'
+      {...flexProps}
+    >
+      <Image
+        src={src}
+        layout='fill'
+        alt='Album Cover'
       />
     </Flex>
   )
@@ -47,10 +66,27 @@ function ScreenLayout ({ children }) {
 export default function Home () {
   return (
     <ScreenLayout>
-      <VStack width='100%' spacing='-3'>
-        <AlbumLogo />
-        <Title>dashboard</Title>
-      </VStack>
+      <HStack
+        position='relative'
+        width='100%'
+      >
+        <AlbumCover
+          flexProps={{ right: '0' }}
+          src='/images/cover-1.png'
+        />
+        <VStack
+          position='relative'
+          width='100%'
+          spacing='-3'
+        >
+          <AlbumLogo />
+          <Title>dashboard</Title>
+        </VStack>
+        <AlbumCover
+          flexProps={{ left: '0' }}
+          src='/images/cover-2.png'
+        />
+      </HStack>
     </ScreenLayout>
   )
 }

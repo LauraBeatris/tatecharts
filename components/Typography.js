@@ -9,6 +9,7 @@ export function Text () {
 export function Title ({ children }) {
   return (
     <ChakraText
+      as='h1'
       css={textShadowCSS}
       color='grayLight'
       fontSize='4xl'
