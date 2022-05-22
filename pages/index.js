@@ -1,4 +1,5 @@
 import { Container, Flex, VStack } from '@chakra-ui/react'
+import { Title } from 'components/Typography'
 import Image from 'next/image'
 
 const imageStyle = {
@@ -46,7 +47,10 @@ function ScreenLayout ({ children }) {
 export default function Home () {
   return (
     <ScreenLayout>
-      <AlbumLogo />
+      <VStack width='100%' spacing='-3'>
+        <AlbumLogo />
+        <Title>dashboard</Title>
+      </VStack>
     </ScreenLayout>
   )
 }
