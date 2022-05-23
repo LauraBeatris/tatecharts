@@ -12,6 +12,7 @@
     "@chakra-ui/react": "^2.1.0",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
+    "cheerio": "^1.0.0-rc.11",
     "eslint": "8.11.0",
     "eslint-config-next": "12.1.0",
     "eslint-config-standard": "^16.0.3",
@@ -27,7 +28,8 @@
     "next": "12.1.6",
     "prettier": "^2.5.1",
     "react": "18.1.0",
-    "react-dom": "18.1.0"
+    "react-dom": "18.1.0",
+    "react-query": "^3.39.0"
   },
   "devDependencies": {
     "eslint": "8.16.0",
