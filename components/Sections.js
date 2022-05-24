@@ -1,4 +1,5 @@
-import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Badge, Box, HStack, Link, Skeleton, Stack, VStack } from '@chakra-ui/react'
+import Image from 'next/image'
+import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Badge, Box, Flex, HStack, Link, Skeleton, Stack, VStack } from '@chakra-ui/react'
 import { SectionDescription, SectionTitle } from './Typography'
 import { AlbumStatsTable, AlbumStreamsTable, SingleStatsTable } from './Tables'
 import { ChartTargetSelect } from './ChartTargetSelect'
@@ -18,6 +19,24 @@ function TrackAccordionItem ({ track }) {
         </AccordionButton>
       </h2>
       <AccordionPanel>
+        <VStack justifyContent='center'>
+          <SectionDescription>
+            Release Date: {trackInfo?.release_date}
+          </SectionDescription>
+
+          {trackInfo?.avatar && (
+            <Flex borderRadius='12px' width='100px' height='100px' position='relative'>
+              <Image
+                src={trackInfo.avatar}
+                layout='fill'
+                alt='Track Avatar'
+                style={{ borderRadius: '12px' }}
+              />
+            </Flex>
+          )}
+
+        </VStack>
+
         <SingleStatsTable stats={stats} links={links} />
       </AccordionPanel>
     </AccordionItem>
@@ -29,7 +48,7 @@ export function TracksStats () {
 
   return (
     <VStack as='section' width='100%' alignItems='flex-start'>
-      <Stack direction={['column', 'row']} width='100%' alignItems={[, 'flex-end']}>
+      <Stack direction={['column', 'row']} width='100%' alignItems={[null, 'flex-end']}>
         <VStack
           spacing='-1'
           alignItems='flex-start'
@@ -41,7 +60,10 @@ export function TracksStats () {
           </SectionDescription>
         </VStack>
 
-        <Link isExternal href='https://open.spotify.com/track/3I1Smy5zhzNEc9grpjwY1s?si=8299acbf237c4bba'>
+        <Link
+          href='https://open.spotify.com/track/3I1Smy5zhzNEc9grpjwY1s?si=8299acbf237c4bba'
+          isExternal
+        >
           <Badge variant='solid' cursor='pointer'>
             Go stream the last single: WWYD 🖤
           </Badge>
