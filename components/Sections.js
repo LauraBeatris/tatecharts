@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Badge, Box, Flex, HStack, Link, Select, Skeleton, Stack, VStack } from '@chakra-ui/react'
 import { SectionDescription, SectionTitle } from './Typography'
-import { AlbumChartsTable, TrackChartsTable, TrackStatsTable } from './Tables'
+import { TrackChartsTable, TrackStatsTable } from './Tables'
 import { useTracks } from 'hooks/useTracks'
 import { useState } from 'react'
 import { countryListAlpha2 } from 'countryCodes'
