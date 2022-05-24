@@ -95,7 +95,6 @@ export default function Home () {
       <VStack paddingTop='5'>
         <TracksStats />
         <TracksCharts />
-        <AlbumCharts />
       </VStack>
     </ScreenLayout>
   )

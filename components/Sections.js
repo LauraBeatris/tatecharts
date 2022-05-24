@@ -264,23 +264,3 @@ export function TracksCharts () {
     </VStack>
   )
 }
-
-export function AlbumCharts () {
-  return (
-    <VStack width='100%' as='section'>
-      <VStack alignItems='flex-start' spacing='-1'>
-        <SectionTitle>album charts</SectionTitle>
-        <SectionDescription>
-          by default showing global charts, select above for results from a specific country
-        </SectionDescription>
-      </VStack>
-
-      <VStack
-        width='100%'
-        alignItems='flex-start'
-      >
-        <AlbumChartsTable />
-      </VStack>
-    </VStack>
-  )
-}
