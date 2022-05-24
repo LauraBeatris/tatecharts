@@ -2,7 +2,7 @@ import { Text } from '@chakra-ui/react'
 
 const textShadowCSS = { textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)' }
 
-export function Title ({ children }) {
+export function Title ({ children, ...rest }) {
   return (
     <Text
       as='h1'
@@ -12,6 +12,7 @@ export function Title ({ children }) {
       textShadow='lg'
       lineHeight='48px'
       fontWeight='800'
+      {...rest}
     >
       {children}
     </Text>

@@ -1,4 +1,4 @@
-import { Container, Flex, HStack, VStack } from '@chakra-ui/react'
+import { Container, Flex, HStack, Link, Text, VStack } from '@chakra-ui/react'
 import Image from 'next/image'
 import { Title } from './Typography'
 
@@ -72,8 +72,48 @@ function Header () {
   )
 }
 
+const footerLinks = {
+  twitter: 'https://twitter.com/sourttate',
+  donation: 'https://www.buymeacoffee.com/laurabeatris'
+}
+
 function Footer () {
-  return <></>
+  return (
+    <VStack
+      as='footer'
+      width='100%'
+      paddingTop='5'
+      textAlign='center'
+    >
+      <Title
+        as='p'
+        fontSize='32px'
+        lineHeight='32px'
+      >
+        created by{' '}
+        <Link
+          href={footerLinks.twitter}
+          isExternal
+        >
+          @sourrtate
+        </Link>
+      </Title>
+      <Text
+        as='p'
+        color='black'
+        fontSize='24px'
+        maxWidth='100%'
+        overflowWrap='break-word'
+      >
+        <Link
+          href={footerLinks.donation}
+          isExternal
+        >
+          {footerLinks.donation}
+        </Link>
+      </Text>
+    </VStack>
+  )
 }
 
 export function ScreenLayout ({ children }) {

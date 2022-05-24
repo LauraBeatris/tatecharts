@@ -147,42 +147,37 @@ export function TrackChartsTable ({ charts, tableContainerProps }) {
   }
 
   return (
-    <VStack width='100%'>
-      <TableContainer
-        width='100%'
-        {...tableContainerProps}
-      >
-        <Table variant='simple' size='sm'>
-          <Thead>
-            <Tr>
-              <Th color='black'>
-                Name
-              </Th>
-              <Th color='black' isNumeric>
-                Top Position
-              </Th>
-              <Th color='black' isNumeric>
-                Current Position
-              </Th>
+    <VStack width='100%' maxWidth='100%' overflow='scroll'>
+      <Table variant='simple' size='sm' overflow='scroll'>
+        <Thead>
+          <Tr>
+            <Th color='black'>
+              Name
+            </Th>
+            <Th color='black' isNumeric>
+              Top Position
+            </Th>
+            <Th color='black' isNumeric>
+              Current Position
+            </Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          {charts?.map(({
+            name,
+            top_position: topPosition,
+            current_position: currentPosition
+          }) => (
+            <Tr key={name}>
+              <Td color='black'>
+                {name}
+              </Td>
+              <Td color='black' isNumeric>{topPosition}</Td>
+              <Td color='black' isNumeric>{currentPosition ?? 'Out of chart'}</Td>
             </Tr>
-          </Thead>
-          <Tbody>
-            {charts?.map(({
-              name,
-              top_position: topPosition,
-              current_position: currentPosition
-            }) => (
-              <Tr key={name}>
-                <Td color='black'>
-                  {name}
-                </Td>
-                <Td color='black' isNumeric>{topPosition}</Td>
-                <Td color='black' isNumeric>{currentPosition ?? 'Out of chart'}</Td>
-              </Tr>
-            ))}
-          </Tbody>
-        </Table>
-      </TableContainer>
+          ))}
+        </Tbody>
+      </Table>
     </VStack>
   )
 }
