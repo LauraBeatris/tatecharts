@@ -1,4 +1,4 @@
-import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Flex, HStack, Skeleton, VStack } from '@chakra-ui/react'
+import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Badge, Box, HStack, Link, Skeleton, Stack, VStack } from '@chakra-ui/react'
 import { SectionDescription, SectionTitle } from './Typography'
 import { AlbumStatsTable, AlbumStreamsTable, SingleStatsTable } from './Tables'
 import { ChartTargetSelect } from './ChartTargetSelect'
@@ -29,7 +29,7 @@ export function TracksStats () {
 
   return (
     <VStack as='section' width='100%' alignItems='flex-start'>
-      <HStack width='100%' alignItems='flex-end'>
+      <Stack direction={['column', 'row']} width='100%' alignItems={[, 'flex-end']}>
         <VStack
           spacing='-1'
           alignItems='flex-start'
@@ -40,7 +40,13 @@ export function TracksStats () {
             expand each row to see stats of every track
           </SectionDescription>
         </VStack>
-      </HStack>
+
+        <Link isExternal href='https://open.spotify.com/track/3I1Smy5zhzNEc9grpjwY1s?si=8299acbf237c4bba'>
+          <Badge variant='solid' cursor='pointer'>
+            Go stream the last single: WWYD 🖤
+          </Badge>
+        </Link>
+      </Stack>
 
       <Skeleton
         width='100%'
