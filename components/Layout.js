@@ -125,11 +125,13 @@ export function ScreenLayout ({ children }) {
       backgroundColor='pink.300'
     >
       <Container
+        flex='1'
         maxW='2xl'
         height='100%'
         paddingX='5'
         paddingY='10'
         centerContent
+        justifyContent='space-between'
       >
         <Header />
         {children}
