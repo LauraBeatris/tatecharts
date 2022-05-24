@@ -12,6 +12,7 @@
     "@chakra-ui/react": "^2.1.0",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
+    "axios": "^0.27.2",
     "cheerio": "^1.0.0-rc.11",
     "eslint": "8.11.0",
     "eslint-config-next": "12.1.0",
