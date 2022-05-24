@@ -1,39 +1,66 @@
-import Image from 'next/image'
-import { Flex, HStack, VStack } from '@chakra-ui/react'
+import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Flex, HStack, Skeleton, VStack } from '@chakra-ui/react'
 import { SectionDescription, SectionTitle } from './Typography'
-import { AlbumStatsTable, AlbumStreamsTable, LastSingleStatsTable } from './Tables'
+import { AlbumStatsTable, AlbumStreamsTable, SingleStatsTable } from './Tables'
 import { ChartTargetSelect } from './ChartTargetSelect'
+import { useTracks } from 'hooks/useTracks'
 
-export function LastSingleStats () {
+function TrackAccordionItem ({ track }) {
+  const { stats, links, trackInfo } = track ?? {}
+
   return (
-    <VStack as='section' alignItems='flex-start'>
+    <AccordionItem width='100%'>
+      <h2>
+        <AccordionButton width='100%'>
+          <Box width='100%' color='black' flex='1' textAlign='left'>
+            {trackInfo?.title}
+          </Box>
+          <AccordionIcon color='black' />
+        </AccordionButton>
+      </h2>
+      <AccordionPanel>
+        <SingleStatsTable stats={stats} links={links} />
+      </AccordionPanel>
+    </AccordionItem>
+  )
+}
+
+export function TracksStats () {
+  const { tracks, isLoading } = useTracks()
+
+  return (
+    <VStack as='section' width='100%' alignItems='flex-start'>
       <HStack width='100%' alignItems='flex-end'>
         <VStack
           spacing='-1'
           alignItems='flex-start'
+          width='100%'
         >
-          <SectionTitle>last single stats</SectionTitle>
+          <SectionTitle>track stats</SectionTitle>
           <SectionDescription>
-            click on each row to listen on the respective platform
+            expand each row to see stats of every track
           </SectionDescription>
         </VStack>
-
-        <Flex
-          width='182px'
-          height='84px'
-          alignItems='flex-end'
-          position='relative'
-        >
-          <Image
-            alt='WWYD player'
-            src='/images/wwyd-player-spotify.png'
-            layout='fill'
-          />
-        </Flex>
       </HStack>
 
-      <ChartTargetSelect />
-      <LastSingleStatsTable />
+      <Skeleton
+        width='100%'
+        isLoaded={!isLoading}
+        borderRadius='12'
+        startColor='tableBg'
+      >
+        <Accordion
+          width='100%'
+          allowToggle
+          borderRadius='12'
+          backgroundColor='tableBg'
+        >
+          {tracks.map(track => (
+            <TrackAccordionItem
+              key={track?.trackInfo?.songstats_track_id}
+              track={track}
+            />))}
+        </Accordion>
+      </Skeleton>
     </VStack>
   )
 }

@@ -1,4 +1,3 @@
-import axios from 'axios'
 import { songStatsClient } from 'config/client'
 
 export default async function handler (req, res) {
@@ -13,29 +12,19 @@ export default async function handler (req, res) {
       with_playlists: true
     }
   })
-
-  const { stats, links } = data
-  const spotifyStats = stats.find(({ source }) => source === 'spotify').data
-  const spotifyLink = links.find(({ source }) => source === 'spotify')
-
-  const appleMusicLink = links.find(({ source }) => source === 'apple_music')
-
-  const deezerLink = links.find(({ source }) => source === 'deezer')
+  const { stats, links, track_info: trackInfo } = data
 
   return res.status(200).json({
-    stats: { spotify: spotifyStats },
+    stats: {
+      deezer: stats.find(({ source }) => source === 'deezer').data,
+      spotify: stats.find(({ source }) => source === 'spotify').data,
+      appleMusic: stats.find(({ source }) => source === 'apple_music').data
+    },
     links: {
-      spotify: spotifyLink,
-      deezer: deezerLink,
-      appleMusic: appleMusicLink
-    }
+      deezer: links.find(({ source }) => source === 'deezer'),
+      spotify: links.find(({ source }) => source === 'spotify'),
+      appleMusic: links.find(({ source }) => source === 'apple_music')
+    },
+    trackInfo
   })
-}
-
-export function getTrack ({ isrc }) {
-  return axios.get('/api/track', { params: { isrc } }).then(res => res.data)
-}
-
-export function transformTrackResponse (response) {
-
 }
