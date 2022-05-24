@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { mapSongsISRC } from 'isrc'
+import { mapSongsISRC } from 'constants/isrc'
 import { useQuery } from 'react-query'
 
 function getTrack ({ isrc }) {

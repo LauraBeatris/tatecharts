@@ -1,5 +1,5 @@
 import { Container, Flex, HStack, VStack } from '@chakra-ui/react'
-import { AlbumStats, TracksStats } from 'components/Sections'
+import { AlbumCharts, TracksCharts, TracksStats } from 'components/Sections'
 import { Title } from 'components/Typography'
 import Image from 'next/image'
 
@@ -94,7 +94,8 @@ export default function Home () {
 
       <VStack paddingTop='5'>
         <TracksStats />
-        <AlbumStats />
+        <TracksCharts />
+        <AlbumCharts />
       </VStack>
     </ScreenLayout>
   )

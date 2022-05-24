@@ -2,14 +2,14 @@
 import Image from 'next/image'
 import { Flex, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr, VStack } from '@chakra-ui/react'
 
-export function SingleStatsTable ({ stats, links, tableContainerProps }) {
-  const navigateToSingleOnPlatform = (platformName) => () => {
+export function TrackStatsTable ({ stats, links, tableContainerProps }) {
+  const navigateToSingleOnPlatform = (serviceName) => () => {
     const { spotify, appleMusic, deezer } = links ?? {}
     const url = {
       deezer: deezer.url,
       spotify: spotify.url,
       appleMusic: appleMusic.url
-    }[platformName]
+    }[serviceName]
 
     window.open(url)
   }
@@ -25,7 +25,7 @@ export function SingleStatsTable ({ stats, links, tableContainerProps }) {
           <Thead>
             <Tr>
               <Th color='black'>
-                Platform
+                Service
               </Th>
               <Th color='black' isNumeric>Streams</Th>
             </Tr>
@@ -63,7 +63,7 @@ export function SingleStatsTable ({ stats, links, tableContainerProps }) {
           <Thead>
             <Tr>
               <Th color='black'>
-                Platform
+                Service
               </Th>
               <Th color='black' isNumeric>Playlists Total</Th>
             </Tr>
@@ -124,7 +124,9 @@ export function SingleStatsTable ({ stats, links, tableContainerProps }) {
                   <Text marginLeft='2'>Apple Music</Text>
                 </Flex>
               </Td>
-              <Td color='black' isNumeric>{stats?.appleMusic?.playlists_total ?? 'Not available'}</Td>
+              <Td color='black' isNumeric>
+                {stats?.appleMusic?.playlists_total ?? 'Not available'}
+              </Td>
             </Tr>
           </Tbody>
         </Table>
@@ -133,60 +135,59 @@ export function SingleStatsTable ({ stats, links, tableContainerProps }) {
   )
 }
 
-const mapPlatformAlbumLinks = {
-  spotify: '',
-  deezer: '',
-  appleMusic: ''
-}
+export function TrackChartsTable ({ charts, tableContainerProps }) {
+  const hasChartsData = charts?.length > 0
 
-export function AlbumStreamsTable ({ tableContainerProps }) {
-  const navigateToAlbumOnPlatform = (platform) => () => {
-    window.open(mapPlatformAlbumLinks[platform])
+  if (!hasChartsData) {
+    return (
+      <VStack width='100%'>
+        <Text color='gray.800' fontSize='14px'>Charts data not found</Text>
+      </VStack>
+    )
   }
 
   return (
-    <TableContainer
-      width='100%'
-      borderRadius='12px'
-      backgroundColor='tableBg'
-      {...tableContainerProps}
-    >
-      <Table variant='simple' size='sm'>
-        <Thead>
-          <Tr>
-            <Th color='black'>
-              Platform
-            </Th>
-            <Th color='black' isNumeric>Streams</Th>
-          </Tr>
-        </Thead>
-        <Tbody>
-          <Tr
-            cursor='pointer'
-            onClick={navigateToAlbumOnPlatform('spotify')}
-          >
-            <Td color='black'>
-              <Flex alignItems='center'>
-                <Flex width='25px' height='25px' position='relative'>
-                  <Image
-                    src='/images/icons/spotify.png'
-                    layout='fill'
-                    alt='Spotify Icon'
-                  />
-                </Flex>
-
-                <Text marginLeft='2'>Spotify</Text>
-              </Flex>
-            </Td>
-            <Td color='black' isNumeric>200</Td>
-          </Tr>
-        </Tbody>
-      </Table>
-    </TableContainer>
+    <VStack width='100%'>
+      <TableContainer
+        width='100%'
+        {...tableContainerProps}
+      >
+        <Table variant='simple' size='sm'>
+          <Thead>
+            <Tr>
+              <Th color='black'>
+                Name
+              </Th>
+              <Th color='black' isNumeric>
+                Top Position
+              </Th>
+              <Th color='black' isNumeric>
+                Current Position
+              </Th>
+            </Tr>
+          </Thead>
+          <Tbody>
+            {charts?.map(({
+              name,
+              top_position: topPosition,
+              current_position: currentPosition
+            }) => (
+              <Tr key={name}>
+                <Td color='black'>
+                  {name}
+                </Td>
+                <Td color='black' isNumeric>{topPosition}</Td>
+                <Td color='black' isNumeric>{currentPosition ?? 'Out of chart'}</Td>
+              </Tr>
+            ))}
+          </Tbody>
+        </Table>
+      </TableContainer>
+    </VStack>
   )
 }
 
-export function AlbumStatsTable ({ tableContainerProps }) {
+export function AlbumChartsTable ({ tableContainerProps }) {
   return (
     <TableContainer
       width='100%'
@@ -198,15 +199,13 @@ export function AlbumStatsTable ({ tableContainerProps }) {
         <Thead>
           <Tr>
             <Th color='black'>
-              Platform
+              Service
             </Th>
             <Th color='black' isNumeric>Position</Th>
           </Tr>
         </Thead>
         <Tbody>
-          <Tr
-            cursor='pointer'
-          >
+          <Tr>
             <Td color='black'>
               <Flex alignItems='center'>
                 <Flex width='25px' height='25px' position='relative'>
@@ -222,7 +221,7 @@ export function AlbumStatsTable ({ tableContainerProps }) {
             </Td>
             <Td color='black' isNumeric>#1</Td>
           </Tr>
-          <Tr cursor='pointer'>
+          <Tr>
             <Td color='black'>
               <Flex alignItems='center'>
                 <Flex width='25px' height='25px' position='relative'>
@@ -238,9 +237,7 @@ export function AlbumStatsTable ({ tableContainerProps }) {
             </Td>
             <Td color='black' isNumeric>Not available yet</Td>
           </Tr>
-          <Tr
-            cursor='pointer'
-          >
+          <Tr>
             <Td color='black'>
               <Flex alignItems='center'>
                 <Flex width='25px' height='25px' position='relative'>
