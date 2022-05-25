@@ -72,8 +72,9 @@ function Header () {
   )
 }
 
+export const twitterHandle = 'sourrtate'
 const footerLinks = {
-  twitter: 'https://twitter.com/sourttate',
+  twitter: `https://twitter.com/${twitterHandle}`,
   donation: 'https://www.buymeacoffee.com/laurabeatris'
 }
 
@@ -95,7 +96,7 @@ function Footer () {
           href={footerLinks.twitter}
           isExternal
         >
-          @sourrtate
+          @{twitterHandle}
         </Link>
       </Title>
       <Text
