@@ -2,7 +2,7 @@ import { NextSeo } from 'next-seo'
 import { twitterHandle } from './Layout'
 
 const title = 'Tate McRae Charts'
-const description = 'A website to display charts of the Canadian singer Tate McRae'
+const description = 'A website to display tracks charts/stats of the Canadian singer Tate McRae'
 const url = 'https://tatecharts.com'
 
 export function Seo () {
