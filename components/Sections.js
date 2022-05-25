@@ -4,7 +4,7 @@ import { SectionDescription, SectionTitle } from './Typography'
 import { TrackChartsTable, TrackStatsTable } from './Tables'
 import { useTracks } from 'hooks/useTracks'
 import { useState } from 'react'
-import { countryListAlpha2 } from 'countryCodes'
+import { countryListAlpha2 } from 'constants/countryCodes'
 
 function TrackStatsAccordionItem ({ track }) {
   const { stats, links, trackInfo } = track ?? {}
