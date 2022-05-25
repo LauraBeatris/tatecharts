@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://tatecharts.com/sitemap.xml
