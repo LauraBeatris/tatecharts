@@ -6,6 +6,31 @@ import { useTracks } from 'hooks/useTracks'
 import { useState } from 'react'
 import { countryListAlpha2 } from 'constants/countryCodes'
 
+const mapFallbackAvatarByTitle = {
+  chaotic: 'https://i.scdn.co/image/ab67616d0000b273962dffe5cc5a5118d0620b76'
+}
+
+function TrackAvatarImage ({ trackTitle, trackAvatar }) {
+  const [src, setSrc] = useState(trackAvatar)
+
+  const handleLoadingComplete = (result) => {
+    setSrc(mapFallbackAvatarByTitle[trackTitle])
+  }
+
+  return (
+    <Flex borderRadius='12px' width='100px' height='100px' position='relative'>
+      {src && (
+        <Image
+          src={src}
+          alt='Track Avatar'
+          layout='fill'
+          style={{ borderRadius: '12px' }}
+          onError={handleLoadingComplete}
+        />)}
+    </Flex>
+  )
+}
+
 function TrackStatsAccordionItem ({ track }) {
   const { stats, links, trackInfo } = track ?? {}
 
@@ -31,16 +56,10 @@ function TrackStatsAccordionItem ({ track }) {
             Release Date: {trackInfo?.release_date}
           </SectionDescription>
 
-          {trackInfo?.avatar && (
-            <Flex borderRadius='12px' width='100px' height='100px' position='relative'>
-              <Image
-                src={trackInfo.avatar}
-                layout='fill'
-                alt='Track Avatar'
-                style={{ borderRadius: '12px' }}
-              />
-            </Flex>
-          )}
+          <TrackAvatarImage
+            trackAvatar={trackInfo?.avatar}
+            trackTitle={trackInfo?.title}
+          />
         </VStack>
 
         <TrackStatsTable stats={stats} links={links} />
