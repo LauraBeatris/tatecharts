@@ -121,7 +121,7 @@ export function TracksStats () {
 function transformChartsList ({ charts, service, countryCode }) {
   if (service === 'spotify') {
     return charts?.filter(({ spotifyid: spotifyId, chart_type: chartType }) => {
-      const hasSupportedSpotifyChartType = !['City'].includes(chartType)
+      const hasSupportedSpotifyChartType = !['City', 'Local Pulse'].includes(chartType)
       const hasSpotifyCountryCode = spotifyId?.includes(countryCode.toLowerCase())
 
       return hasSupportedSpotifyChartType && hasSpotifyCountryCode
