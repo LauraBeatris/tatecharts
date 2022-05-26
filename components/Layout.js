@@ -72,7 +72,7 @@ function Header () {
   )
 }
 
-export const twitterHandle = 'sourrtate'
+export const twitterHandle = 'laurbeatris'
 const footerLinks = {
   twitter: `https://twitter.com/${twitterHandle}`,
   donation: 'https://www.buymeacoffee.com/laurabeatris'
@@ -84,6 +84,7 @@ function Footer () {
       as='footer'
       width='100%'
       paddingTop='5'
+      spacing='1'
       textAlign='center'
     >
       <Title
@@ -99,6 +100,9 @@ function Footer () {
           @{twitterHandle}
         </Link>
       </Title>
+      <Text as='small' color='black'>
+        made by a fan, for fans
+      </Text>
       <Text
         as='p'
         color='black'
