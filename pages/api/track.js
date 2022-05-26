@@ -1,6 +1,7 @@
 import { songStatsClient } from 'config/client'
+import { withSentry } from '@sentry/nextjs'
 
-export default async function handler (req, res) {
+async function handler (req, res) {
   const { query: { isrc } } = req
   const { data } = await songStatsClient.get('/tracks/stats', {
     params: {
@@ -8,7 +9,6 @@ export default async function handler (req, res) {
       source: 'spotify,apple_music,deezer',
       with_links: true,
       with_charts: true,
-      with_videos: true,
       with_playlists: true
     }
   })
@@ -28,3 +28,5 @@ export default async function handler (req, res) {
     trackInfo
   })
 }
+
+export default withSentry(handler)
