@@ -2,6 +2,16 @@
 import Image from 'next/image'
 import { Flex, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr, VStack } from '@chakra-ui/react'
 
+/**
+ * Transforms a integer number into a string that contain dots
+ * in any point of the value that has a multiple of 3
+ *
+ * @example numberWithDots(7852906) = '7.852.906'
+ */
+function numberWithDots (x) {
+  return x?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
+}
+
 export function TrackStatsTable ({ stats, links, tableContainerProps }) {
   const navigateToSingleOnPlatform = (serviceName) => () => {
     const { spotify, appleMusic, deezer } = links ?? {}
@@ -48,7 +58,9 @@ export function TrackStatsTable ({ stats, links, tableContainerProps }) {
                   <Text marginLeft='2'>Spotify</Text>
                 </Flex>
               </Td>
-              <Td color='black' isNumeric>{stats?.spotify?.streams_total ?? 'Not available'}</Td>
+              <Td color='black' isNumeric>
+                {numberWithDots(stats?.spotify?.streams_total) ?? 'Not available'}
+              </Td>
             </Tr>
           </Tbody>
         </Table>
@@ -86,7 +98,9 @@ export function TrackStatsTable ({ stats, links, tableContainerProps }) {
                   <Text marginLeft='2'>Spotify</Text>
                 </Flex>
               </Td>
-              <Td color='black' isNumeric>{stats?.spotify?.playlists_total ?? 'Not available'}</Td>
+              <Td color='black' isNumeric>
+                {numberWithDots(stats?.spotify?.playlists_total) ?? 'Not available'}
+              </Td>
             </Tr>
             <Tr
               cursor='pointer'
@@ -105,7 +119,9 @@ export function TrackStatsTable ({ stats, links, tableContainerProps }) {
                   <Text marginLeft='2'>Deezer</Text>
                 </Flex>
               </Td>
-              <Td color='black' isNumeric>{stats?.deezer?.playlists_total ?? 'Not available'}</Td>
+              <Td color='black' isNumeric>
+                {numberWithDots(stats?.deezer?.playlists_total) ?? 'Not available'}
+              </Td>
             </Tr>
             <Tr
               cursor='pointer'
@@ -125,7 +141,7 @@ export function TrackStatsTable ({ stats, links, tableContainerProps }) {
                 </Flex>
               </Td>
               <Td color='black' isNumeric>
-                {stats?.appleMusic?.playlists_total ?? 'Not available'}
+                {numberWithDots(stats?.appleMusic?.playlists_total) ?? 'Not available'}
               </Td>
             </Tr>
           </Tbody>
