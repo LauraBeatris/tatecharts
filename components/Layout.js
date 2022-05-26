@@ -18,6 +18,7 @@ function AlbumLogo () {
         src='/images/iutticf-logo.png'
         alt='I Used To Think I Could Fly Album Logo'
         layout='fill'
+        priority
         style={imageStyle}
       />
     </Flex>
