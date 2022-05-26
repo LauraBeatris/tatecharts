@@ -1,6 +1,8 @@
 import { VStack } from '@chakra-ui/react'
 import { ScreenLayout } from 'components/Layout'
-import { AlbumCharts, TracksCharts, TracksStats } from 'components/Sections'
+import { AlbumCharts } from 'components/Sections/AlbumCharts'
+import { TracksCharts } from 'components/Sections/TracksCharts'
+import { TracksStats } from 'components/Sections/TracksStats'
 import { Seo } from 'components/Seo'
 
 export default function Home () {
