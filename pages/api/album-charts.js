@@ -16,7 +16,7 @@ async function handler (req, res) {
   $(albumCharts).each((_idx, el) => {
     results.push($(el).text())
   })
-  const charts = results.filter((result) => !result.includes(mapServicesValue.appleMusic))
+  const charts = results.filter((result) => !result.includes(mapServicesValue.appleMusic)).filter((el, index, array) => array.indexOf(el) === index)
 
   return res.status(200).json([{
     service: mapServicesValue.appleMusic,

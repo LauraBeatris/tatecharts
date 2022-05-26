@@ -1,6 +1,7 @@
 import {
   Badge,
   Button,
+  HStack,
   Link,
   ListItem,
   Modal,
@@ -13,15 +14,23 @@ import {
   Skeleton,
   Text,
   UnorderedList,
+  useClipboard,
   useDisclosure,
   VStack
 } from '@chakra-ui/react'
 import { SectionTitle } from '../Typography'
 import { useAlbumCharts } from 'hooks/useAlbumCharts'
+import { CopyIcon } from '@chakra-ui/icons'
+
+function transformDataForClipboard (data) {
+  return data?.[0]?.charts?.join('\n')
+}
 
 export function AlbumCharts () {
   const { data, isLoading } = useAlbumCharts()
   const { isOpen, onOpen, onClose } = useDisclosure()
+
+  const { hasCopied, onCopy } = useClipboard(transformDataForClipboard(data))
 
   return (
     <>
@@ -34,7 +43,20 @@ export function AlbumCharts () {
             <Skeleton isLoaded={!isLoading}>
               {data?.map(({ service, charts }) => (
                 <VStack key={service} maxHeight='60vh' overflow='scroll'>
-                  <Text fontSize='20px' fontWeight='bold' color='pink.400'>{service}</Text>
+                  <HStack width='100%' justifyContent='center'>
+                    <Text fontSize='20px' fontWeight='bold' color='pink.400'>
+                      {service}
+                    </Text>
+                    <Button
+                      leftIcon={<CopyIcon />}
+                      color='black'
+                      fontSize='16px'
+                      onClick={onCopy}
+                      ml={2}
+                    >
+                      {hasCopied ? 'Copied' : 'Copy'}
+                    </Button>
+                  </HStack>
                   <UnorderedList color='black'>
                     {charts.map((value) => (
                       <ListItem key={value}>{value}</ListItem>
