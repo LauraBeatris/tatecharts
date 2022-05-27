@@ -15,6 +15,7 @@ import { TrackChartsTable } from '../Tables'
 import { useState } from 'react'
 import { countryListAlpha2 } from 'constants/countryCodes'
 import { SkeletonWithMaintenanceMessage } from './TracksStats'
+import { logTrackChartsClick } from 'googleAnalytics'
 
 function transformChartsList ({ charts, service, countryCode }) {
   if (service === 'spotify') {
@@ -60,8 +61,12 @@ function TrackChartsAccordionItem ({ service, countryCode, track }) {
     countryCode
   }) ?? []
 
+  const handleClick = () => {
+    logTrackChartsClick({ trackTitle: trackInfo.title, service, countryCode })
+  }
+
   return (
-    <AccordionItem width='100%'>
+    <AccordionItem width='100%' onClick={handleClick}>
       <h2>
         <AccordionButton width='100%'>
           <Box

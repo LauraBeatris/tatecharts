@@ -15,6 +15,7 @@ import {
 import { SectionDescription, SectionTitle } from '../Typography'
 import { TrackStatsTable } from '../Tables'
 import { useState } from 'react'
+import { logTrackStatsClick } from 'googleAnalytics'
 
 const isUnderMaintenance = process.env.NEXT_PUBLIC_TRACKS_MAINTENANCE
 export function SkeletonWithMaintenanceMessage ({ children }) {
@@ -75,8 +76,12 @@ function TrackAvatarImage ({ trackTitle, trackAvatar }) {
 function TrackStatsAccordionItem ({ track }) {
   const { stats, links, trackInfo } = track ?? {}
 
+  const handleClick = () => {
+    logTrackStatsClick({ trackTitle: trackInfo?.title })
+  }
+
   return (
-    <AccordionItem width='100%'>
+    <AccordionItem width='100%' onClick={handleClick}>
       <h2>
         <AccordionButton width='100%'>
           <Box
