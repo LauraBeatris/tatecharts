@@ -18,11 +18,11 @@
       "destination": "https://music.apple.com/us/album/i-used-to-think-i-could-fly/1615634288"
     },
     {
-      "source": "spotify",
+      "source": "/spotify",
       "destination": "https://open.spotify.com/album/5fhTetHew6Eph6HfQ9O5gJ?si=T40jPIC_RqyK0uUaz_OMhg"
     },
     {
-      "source": "deezer",
+      "source": "/deezer",
       "destination": "https://www.deezer.com/en/album/321333917"
     }
   ]

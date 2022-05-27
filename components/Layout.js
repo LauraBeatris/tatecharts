@@ -73,7 +73,7 @@ function Header () {
   )
 }
 
-export const twitterHandle = 'laurbeatris'
+export const twitterHandle = 'sourrtate'
 const footerLinks = {
   twitter: `https://twitter.com/${twitterHandle}`,
   donation: 'https://www.buymeacoffee.com/laurabeatris'
