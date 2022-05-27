@@ -1,16 +1,19 @@
 import {
+  Button,
   Link as ChakraLink,
   Flex,
+  HStack,
   ListItem,
   Text,
   UnorderedList,
+  useClipboard,
   VStack
 } from '@chakra-ui/react'
 import Link from 'next/link'
 import axios from 'axios'
 import { ScreenLayout } from 'components/Layout'
 import { Seo } from 'components/Seo'
-import { ArrowBackIcon } from '@chakra-ui/icons'
+import { ArrowBackIcon, CopyIcon } from '@chakra-ui/icons'
 
 const cheerio = require('cheerio')
 const mapServicesName = {
@@ -53,7 +56,13 @@ export async function getStaticProps () {
   }
 }
 
+function transformChartsForClipboard (serviceName, charts) {
+  return [`${serviceName} IUTTIF Charts`, ...charts]?.join('\n')
+}
+
 function ChartsList ({ serviceName, charts }) {
+  const { hasCopied, onCopy } = useClipboard(transformChartsForClipboard(serviceName, charts))
+
   return (
     <VStack
       width='100%'
@@ -72,14 +81,26 @@ function ChartsList ({ serviceName, charts }) {
         justifyContent='center'
         backgroundColor='inherit'
       >
-        <Text
-          bgClip='text'
-          bgGradient='linear(to-l, pink.500, pink.600)'
-          fontSize='20px'
-          fontWeight='extrabold'
-        >
-          {serviceName}
-        </Text>
+        <HStack>
+          <Text
+            bgClip='text'
+            bgGradient='linear(to-l, pink.500, pink.600)'
+            fontSize='20px'
+            fontWeight='extrabold'
+          >
+            {serviceName}
+
+          </Text>
+          <Button
+            leftIcon={<CopyIcon />}
+            color='black'
+            fontSize='16px'
+            onClick={onCopy}
+            ml={2}
+          >
+            {hasCopied ? 'Copied' : 'Copy'}
+          </Button>
+        </HStack>
       </Flex>
       <UnorderedList>
         {charts.map((result) => (
