@@ -14,6 +14,7 @@ import axios from 'axios'
 import { ScreenLayout } from 'components/Layout'
 import { Seo } from 'components/Seo'
 import { ArrowBackIcon, CopyIcon } from '@chakra-ui/icons'
+import { logCopyChartsData } from 'googleAnalytics'
 
 const cheerio = require('cheerio')
 const mapServicesName = {
@@ -63,6 +64,11 @@ function transformChartsForClipboard (serviceName, charts) {
 function ChartsList ({ serviceName, charts }) {
   const { hasCopied, onCopy } = useClipboard(transformChartsForClipboard(serviceName, charts))
 
+  const handleCopy = () => {
+    onCopy()
+    logCopyChartsData({ service: serviceName })
+  }
+
   return (
     <VStack
       width='100%'
@@ -95,7 +101,7 @@ function ChartsList ({ serviceName, charts }) {
             leftIcon={<CopyIcon />}
             color='black'
             fontSize='16px'
-            onClick={onCopy}
+            onClick={handleCopy}
             ml={2}
           >
             {hasCopied ? 'Copied' : 'Copy'}

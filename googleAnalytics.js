@@ -15,3 +15,7 @@ export const logTrackStatsClick = ({ trackTitle }) => {
 export const logTrackChartsClick = ({ trackTitle, service, countryCode }) => {
   logEvent('event', 'track-stats-click', { trackTitle, service, countryCode })
 }
+
+export const logCopyChartsData = ({ service }) => {
+  logEvent('event', 'copy-charts-data', { service })
+}
