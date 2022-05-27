@@ -22,13 +22,24 @@ export function SkeletonWithMaintenanceMessage ({ children }) {
   return (
     <Skeleton
       width='100%'
+      zIndex='1'
+      startColor='black'
+      position='relative'
       isLoaded={!isUnderMaintenance}
       borderRadius='12'
-      position='relative'
-      zIndex='1'
     >
       {isUnderMaintenance && (
-        <Text textAlign='center' top='50' left='50' right='50' position='absolute' color='white' zIndex='2' css={{ visibility: 'initial !important' }}>
+        <Text
+          textAlign='center'
+          top='50'
+          left='50'
+          right='50'
+          position='absolute'
+          color='white'
+          zIndex='2'
+          fontWeight='bold'
+          css={{ visibility: 'initial !important' }}
+        >
           Under maintenance - working to fix technical issue 🚧
         </Text>
       )}

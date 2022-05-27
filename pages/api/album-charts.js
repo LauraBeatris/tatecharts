@@ -12,8 +12,6 @@ async function handler (req, res) {
   const $ = cheerio.load(data)
   const albumCharts = $("td:contains('Album: i used to think i could fly') .app")
 
-  console.log($(albumCharts).text())
-
   const results = []
   $(albumCharts).each((_idx, el) => {
     results.push($(el).text())
