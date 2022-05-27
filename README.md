@@ -3,7 +3,7 @@
 > A dashboard to track music charts of the canadian singer Tate McRae 🎤
 
 <p align='center'>
-  <img width='300' src='./public/images/dashboard-figma-layout.png'>
+  <img width='300' src='./public/images/main-page.png'>
 </p>
 
 ## Get Started
@@ -15,12 +15,12 @@ Requirements: Node.js and a package manager such as NPM or Yarn
 ```bash
 yarn install
 
-OR 
+OR
 
-npm install 
+npm install
 ```
 
-### Start development server 
+### Start development server
 
 ```
 yarn dev
