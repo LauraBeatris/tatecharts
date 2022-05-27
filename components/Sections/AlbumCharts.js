@@ -68,7 +68,7 @@ export function AlbumCharts () {
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme='pink' mr={3} onClick={onClose}>
+            <Button colorScheme='pink' onClick={onClose}>
               Close
             </Button>
           </ModalFooter>

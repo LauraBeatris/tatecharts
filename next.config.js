@@ -4,7 +4,7 @@ const { withSentryConfig } = require('@sentry/nextjs')
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['is2-ssl.mzstatic.com', 'i.scdn.co']
+    domains: ['is2-ssl.mzstatic.com', 'i.scdn.co', 'i.ibb.co']
   }
 }
 
