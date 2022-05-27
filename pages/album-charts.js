@@ -57,7 +57,7 @@ export async function getStaticProps () {
 }
 
 function transformChartsForClipboard (serviceName, charts) {
-  return [`${serviceName} IUTTIF Charts`, ...charts]?.join('\n')
+  return [`${serviceName} IUTTICF Charts`, ...charts]?.join('\n')
 }
 
 function ChartsList ({ serviceName, charts }) {
