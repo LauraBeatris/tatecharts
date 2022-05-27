@@ -12,7 +12,6 @@ import {
 } from '@chakra-ui/react'
 import { SectionDescription, SectionTitle } from '../Typography'
 import { TrackChartsTable } from '../Tables'
-import { useTracks } from 'hooks/useTracks'
 import { useState } from 'react'
 import { countryListAlpha2 } from 'constants/countryCodes'
 import { SkeletonWithMaintenanceMessage } from './TracksStats'
@@ -123,10 +122,9 @@ function ServiceMarketSelects ({
   )
 }
 
-export function TracksCharts () {
+export function TracksCharts ({ tracks }) {
   const [service, setService] = useState('spotify')
   const [countryCode, setCountryCode] = useState('CA')
-  const { tracks } = useTracks()
 
   const handleServiceChange = (event) => {
     setService(event.target.value)

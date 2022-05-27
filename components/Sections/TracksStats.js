@@ -14,10 +14,9 @@ import {
 } from '@chakra-ui/react'
 import { SectionDescription, SectionTitle } from '../Typography'
 import { TrackStatsTable } from '../Tables'
-import { useTracks } from 'hooks/useTracks'
 import { useState } from 'react'
 
-const isUnderMaintenance = !!process.env.NEXT_PUBLIC_TRACKS_MAINTENANCE
+const isUnderMaintenance = process.env.NEXT_PUBLIC_TRACKS_MAINTENANCE
 export function SkeletonWithMaintenanceMessage ({ children }) {
   return (
     <Skeleton
@@ -110,9 +109,7 @@ function TrackStatsAccordionItem ({ track }) {
   )
 }
 
-export function TracksStats () {
-  const { tracks } = useTracks()
-
+export function TracksStats ({ tracks }) {
   return (
     <VStack as='section' width='100%' alignItems='flex-start'>
       <Stack
