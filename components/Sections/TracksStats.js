@@ -9,12 +9,33 @@ import {
   Flex,
   Skeleton,
   Stack,
+  Text,
   VStack
 } from '@chakra-ui/react'
 import { SectionDescription, SectionTitle } from '../Typography'
 import { TrackStatsTable } from '../Tables'
 import { useTracks } from 'hooks/useTracks'
 import { useState } from 'react'
+
+const isUnderMaintenance = !!process.env.NEXT_PUBLIC_TRACKS_MAINTENANCE
+export function SkeletonWithMaintenanceMessage ({ children }) {
+  return (
+    <Skeleton
+      width='100%'
+      isLoaded={!isUnderMaintenance}
+      borderRadius='12'
+      position='relative'
+      zIndex='1'
+    >
+      {isUnderMaintenance && (
+        <Text textAlign='center' top='50' left='50' right='50' position='absolute' color='white' zIndex='2' css={{ visibility: 'initial !important' }}>
+          Under maintenance - working to fix technical issue 🚧
+        </Text>
+      )}
+      {children}
+    </Skeleton>
+  )
+}
 
 const mapFallbackAvatarByTitle = {
   chaotic: 'https://i.scdn.co/image/ab67616d0000b273962dffe5cc5a5118d0620b76'
@@ -79,7 +100,7 @@ function TrackStatsAccordionItem ({ track }) {
 }
 
 export function TracksStats () {
-  const { tracks, isLoading } = useTracks()
+  const { tracks } = useTracks()
 
   return (
     <VStack as='section' width='100%' alignItems='flex-start'>
@@ -100,12 +121,7 @@ export function TracksStats () {
         </VStack>
       </Stack>
 
-      <Skeleton
-        width='100%'
-        isLoaded={!isLoading}
-        borderRadius='12'
-        startColor='tableBg'
-      >
+      <SkeletonWithMaintenanceMessage>
         <Accordion
           width='100%'
           allowToggle
@@ -118,7 +134,7 @@ export function TracksStats () {
               track={track}
             />))}
         </Accordion>
-      </Skeleton>
+      </SkeletonWithMaintenanceMessage>
     </VStack>
   )
 }

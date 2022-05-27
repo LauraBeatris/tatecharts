@@ -16,9 +16,9 @@ export function TrackStatsTable ({ stats, links, tableContainerProps }) {
   const navigateToSingleOnPlatform = (serviceName) => () => {
     const { spotify, appleMusic, deezer } = links ?? {}
     const url = {
-      deezer: deezer.url,
-      spotify: spotify.url,
-      appleMusic: appleMusic.url
+      deezer: deezer?.url,
+      spotify: spotify?.url,
+      appleMusic: appleMusic?.url
     }[serviceName]
 
     window.open(url)

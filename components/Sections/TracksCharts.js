@@ -7,7 +7,6 @@ import {
   Box,
   HStack,
   Select,
-  Skeleton,
   Stack,
   VStack
 } from '@chakra-ui/react'
@@ -16,6 +15,7 @@ import { TrackChartsTable } from '../Tables'
 import { useTracks } from 'hooks/useTracks'
 import { useState } from 'react'
 import { countryListAlpha2 } from 'constants/countryCodes'
+import { SkeletonWithMaintenanceMessage } from './TracksStats'
 
 function transformChartsList ({ charts, service, countryCode }) {
   if (service === 'spotify') {
@@ -126,7 +126,7 @@ function ServiceMarketSelects ({
 export function TracksCharts () {
   const [service, setService] = useState('spotify')
   const [countryCode, setCountryCode] = useState('CA')
-  const { tracks, isLoading } = useTracks()
+  const { tracks } = useTracks()
 
   const handleServiceChange = (event) => {
     setService(event.target.value)
@@ -158,12 +158,7 @@ export function TracksCharts () {
         </VStack>
       </Stack>
 
-      <Skeleton
-        width='100%'
-        isLoaded={!isLoading}
-        borderRadius='12'
-        startColor='tableBg'
-      >
+      <SkeletonWithMaintenanceMessage>
         <Accordion
           width='100%'
           allowToggle
@@ -178,7 +173,7 @@ export function TracksCharts () {
               countryCode={countryCode}
             />))}
         </Accordion>
-      </Skeleton>
+      </SkeletonWithMaintenanceMessage>
     </VStack>
   )
 }
