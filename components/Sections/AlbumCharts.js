@@ -105,7 +105,7 @@ export function AlbumCharts () {
           isExternal
         >
           <Badge variant='solid' cursor='pointer'>
-            Go stream the last single: WWYD 🖤
+            ALBUM IS OUT NOW GO STREAM: WWYD 🖤
           </Badge>
         </Link>
       </VStack>

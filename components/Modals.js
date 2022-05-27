@@ -35,7 +35,7 @@ export function TechnicalIssuesModal () {
         </ModalHeader>
         <ModalCloseButton color='black' />
         <ModalBody>
-          <VStack spacing='4'>
+          <VStack spacing='2'>
             <Flex margin='auto' width='150px' height='150px' position='relative'>
               <Image
                 layout='fill'
@@ -45,9 +45,12 @@ export function TechnicalIssuesModal () {
               />
             </Flex>
 
-            <Text color='black'>
-              Certain tracks stats aren't being shown due to a rate limiting API issue.
-              In the meanwhile,{' '}
+            <Text color='black' textAlign='center'>
+              Certain tracks stats aren't being shown due to a <Text display='inline' fontStyle='italic'>rate limiting API issue</Text>,
+              but in the meanwhile you can check the album charts
+            </Text>
+            <Text color='black' fontWeight='bold' textAlign='center'>
+              And {' '}
               <Link fontWeight='bold' color='pink.600' isExternal href='https://open.spotify.com/album/5fhTetHew6Eph6HfQ9O5gJ?si=T40jPIC_RqyK0uUaz_OMhg'>
                 go stream the album
               </Link> cause it's a perfect piece of art
