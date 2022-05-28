@@ -11,7 +11,7 @@ export function Seo () {
       title={title}
       description={description}
       openGraph={{
-        url: 'https://www.url.ie/a',
+        url,
         title,
         description,
         locale: 'en-CA',
