@@ -1,6 +1,14 @@
 export const mapSongsISRC = {
-  chaotic: 'USRC12102862',
-  'feel-like-shit': 'USRC12103112',
+  'dont-come-back': 'USRC12200894',
+  'i-am-so-gone': 'USRC12200895',
   'what-would-you-do': 'USRC12200896',
-  'she-is-all-i-wanna-be': 'USRC12103120'
+  chaotic: 'USRC12102862',
+  'hate-myself': 'USRC12200488',
+  'whats-your-problem': 'USRC12201445',
+  'she-is-all-i-wanna-be': 'USRC12103120',
+  'boy-x': 'USRC12200898',
+  'you-are-so-cool': 'USRC12200897',
+  'feel-like-shit': 'USRC12103112',
+  'go-away': 'USRC12200899',
+  'i-still-say-goodnight': 'USRC12200900'
 }
