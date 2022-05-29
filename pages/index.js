@@ -18,7 +18,7 @@ export async function getStaticProps () {
       with_playlists: true
     }
   }).then((res) => res.data))
-  const trackDataResponses = await Promise.all(tracksDataRequests)
+  const trackDataResponses = await Promise.all(tracksDataRequests).catch(err => console.log({ err }))
   const transformTrackData = trackDataResponses.map(({
     stats, links, track_info: trackInfo
   }) => ({
