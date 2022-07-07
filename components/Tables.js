@@ -8,7 +8,7 @@ import { Flex, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr, VStack } f
  *
  * @example numberWithDots(7852906) = '7.852.906'
  */
-function numberWithDots (x) {
+export function numberWithDots (x) {
   return x?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
 }
 
