@@ -6,6 +6,7 @@ import { TracksStats } from 'components/Sections/TracksStats'
 import { Seo } from 'components/Seo'
 import { songStatsClient } from 'config/client'
 import { mapSongsISRC } from 'constants/isrc'
+import { publishTweets } from 'lib/twitter'
 
 const isrcs = Object.values(mapSongsISRC)
 export async function getStaticProps () {
@@ -35,8 +36,7 @@ export async function getStaticProps () {
     trackInfo
   }))
 
-  // await postTrackDataTweets({ trackData: transformTrackData })
-  // await postTotalStreamsCountTweet({ trackData: transformTrackData })
+  await publishTweets({ trackData: transformTrackData })
 
   return {
     props: {
